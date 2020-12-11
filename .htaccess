@@ -1,0 +1,14 @@
+# Установка кодировки ответа
+AddDefaultCharset UTF-8
+
+# Включаем RewriteEngine
+RewriteEngine On
+
+# Защищаем директории от индексации
+Options -Indexes
+
+# Направление всех запросов кроме к /public/ на index.php
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L]
